@@ -3,7 +3,7 @@ A class to talk to a Victron GX Modbus module
 
 
 # How to use the code
-## Import the class and connect to an Alfen Chargestation
+## Import the class and connect to a Victron device [or Victron Energy Venus OS on a Raspberry Pi](https://github.com/victronenergy/venus/wiki/raspberrypi-install-venus-image)
 
 ```python
 
