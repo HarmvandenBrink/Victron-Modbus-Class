@@ -1,6 +1,7 @@
 # Victron-Modbus-Class
 A class to talk to a Victron GX Modbus module
 
+![Victron](https://github.com/HarmvandenBrink/Victron-Modbus-Class/blob/main/Victron.jpg "Victron")
 
 # How to use the code
 ## Import the class and connect to a Victron device [or Victron Energy Venus OS on a Raspberry Pi](https://github.com/victronenergy/venus/wiki/raspberrypi-install-venus-image)
