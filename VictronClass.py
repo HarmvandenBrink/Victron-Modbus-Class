@@ -873,27 +873,27 @@ class PVInverter(Victron):
 		#self.Power_limit = decoder.decode_32bit_uint()
 
 
-MultiPlussssBat = Battery("XYZ", "192.168.1.102", 502, 247, 10)
-MultiPlussssBat.Measurements()
+#MultiPlussssBat = Battery("XYZ", "192.168.1.102", 502, 247, 10)
+#MultiPlussssBat.Measurements()
 
 #print(MultiPlussssBat.__dict__)
 
-MultiPlussssVEBus = VEBus("XYZ", "192.168.1.102", 502, 246, 10)
-MultiPlussssVEBus.Measurements()
+#MultiPlussssVEBus = VEBus("XYZ", "192.168.1.102", 502, 246, 10)
+#MultiPlussssVEBus.Measurements()
 
 #print(MultiPlussssVEBus.__dict__)
 
-MultiPlussssSystem = System("XYZ", "192.168.1.102", 502, 100, 10)
-MultiPlussssSystem.Measurements()
+#MultiPlussssSystem = System("XYZ", "192.168.1.102", 502, 100, 10)
+#MultiPlussssSystem.Measurements()
 
 #print(MultiPlussssSystem.__dict__)
 
-MultiPlussssGrid = Grid("XYZ", "192.168.1.102", 502, 30, 10)
-MultiPlussssGrid.Measurements()
+#MultiPlussssGrid = Grid("XYZ", "192.168.1.102", 502, 30, 10)
+#MultiPlussssGrid.Measurements()
 
 #print(MultiPlussssGrid.__dict__)
 
-MultiPlussssPVInverter = PVInverter("XYZ", "192.168.1.102", 502, 32, 10)
-MultiPlussssPVInverter.Measurements()
+#MultiPlussssPVInverter = PVInverter("XYZ", "192.168.1.102", 502, 32, 10)
+#MultiPlussssPVInverter.Measurements()
 
-print(MultiPlussssPVInverter.__dict__)
+#print(MultiPlussssPVInverter.__dict__)
