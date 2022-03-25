@@ -514,9 +514,46 @@ class VEBus(Victron):
 		self.AcPowerSetpoint_acts_as_feed_in_limit = None
 		self.Solar_offset_voltage = None
 
+	def Set(self, command, value):
+
+		client = ModbusClient(self.ip, port=self.port, unit_id=self.unitid, auto_open=True, auto_close=True)
+		builder = BinaryPayloadBuilder(byteorder=Endian.Big, wordorder=Endian.Big)
+		
+		#self.ESS_power_setpoint_phase_1  = decoder.decode_16bit_int()
+		#self.ESS_disable_charge_flag_phase  = decoder.decode_16bit_uint()
+		#self.ESS_disable_feedback_flag_phase  = decoder.decode_16bit_uint()
+		#self.ESS_power_setpoint_phase_2  = decoder.decode_16bit_int()
+		#self.ESS_power_setpoint_phase_3  = decoder.decode_16bit_int()
+
+		if(command == "ESS_power_setpoint_phase_1"):
+			builder.add_16bit_int(value)
+			registers = builder.to_registers()
+			client.write_registers(37, registers, unit=self.unitid)
+
+		if(command == "ESS_power_setpoint_phase_2"):
+			builder.add_16bit_int(value)
+			registers = builder.to_registers()
+			client.write_registers(40, registers, unit=self.unitid)
+
+		if(command == "ESS_power_setpoint_phase_3"):
+			builder.add_16bit_int(value)
+			registers = builder.to_registers()
+			client.write_registers(41, registers, unit=self.unitid)
+
+		if(command == "ESS_disable_charge_flag_phase"):
+			builder.add_16bit_int(value)
+			registers = builder.to_registers()
+			client.write_registers(38, registers, unit=self.unitid)
+
+		if(command == "ESS_disable_feedback_flag_phase"):
+			builder.add_16bit_int(value)
+			registers = builder.to_registers()
+			client.write_registers(39, registers, unit=self.unit_id)
+
+
 	def Measurements(self):
 		client = ModbusClient(self.ip, port=self.port, unit_id=self.unitid, auto_open=True, auto_close=True)
-
+	
 		# Register addresses
 		# com.victronenergy.vebus 
 		# Start 3 - End 72
@@ -873,27 +910,28 @@ class PVInverter(Victron):
 		#self.Power_limit = decoder.decode_32bit_uint()
 
 
-#MultiPlussssBat = Battery("XYZ", "192.168.1.102", 502, 247, 10)
-#MultiPlussssBat.Measurements()
+MultiPlussssBat = Battery("XYZ", "192.168.1.102", 502, 247, 10)
+MultiPlussssBat.Measurements()
 
 #print(MultiPlussssBat.__dict__)
 
-#MultiPlussssVEBus = VEBus("XYZ", "192.168.1.102", 502, 246, 10)
-#MultiPlussssVEBus.Measurements()
+MultiPlussssVEBus = VEBus("XYZ", "192.168.1.102", 502, 246, 10)
+MultiPlussssVEBus.Measurements()
+MultiPlussssVEBus.Set("ESS_power_setpoint_phase_1", 1000)
 
 #print(MultiPlussssVEBus.__dict__)
 
-#MultiPlussssSystem = System("XYZ", "192.168.1.102", 502, 100, 10)
-#MultiPlussssSystem.Measurements()
+MultiPlussssSystem = System("XYZ", "192.168.1.102", 502, 100, 10)
+MultiPlussssSystem.Measurements()
 
 #print(MultiPlussssSystem.__dict__)
 
-#MultiPlussssGrid = Grid("XYZ", "192.168.1.102", 502, 30, 10)
-#MultiPlussssGrid.Measurements()
+MultiPlussssGrid = Grid("XYZ", "192.168.1.102", 502, 30, 10)
+MultiPlussssGrid.Measurements()
 
 #print(MultiPlussssGrid.__dict__)
 
-#MultiPlussssPVInverter = PVInverter("XYZ", "192.168.1.102", 502, 32, 10)
-#MultiPlussssPVInverter.Measurements()
+MultiPlussssPVInverter = PVInverter("XYZ", "192.168.1.102", 502, 32, 10)
+MultiPlussssPVInverter.Measurements()
 
-#print(MultiPlussssPVInverter.__dict__)
+print(MultiPlussssPVInverter.__dict__)
