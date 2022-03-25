@@ -6,35 +6,37 @@ A class to talk to a Victron GX Modbus module
 # How to use the code
 ## Import the class and connect to a Victron device [or Victron Energy Venus OS on a Raspberry Pi](https://github.com/victronenergy/venus/wiki/raspberrypi-install-venus-image)
 
+Make sure to have the right unit ID of the device. You can find the unit ID per sub-device at the screen of the GX device.
+
+
+### Reading measurements
 ```python
 
-MultiPlussssBat = Battery("XYZ", "192.168.1.102", 502, 247, 10)
-MultiPlussssBat.Measurements()
-
-print(MultiPlussssBat.__dict__)
-
-MultiPlussssVEBus = VEBus("XYZ", "192.168.1.102", 502, 246, 10)
-MultiPlussssVEBus.Measurements()
-
-print(MultiPlussssVEBus.__dict__)
-
-MultiPlussssSystem = System("XYZ", "192.168.1.102", 502, 100, 10)
+MultiPlussssSystem = System("XYZ", "192.168.1.XXX", 502, 100, 10)
 MultiPlussssSystem.Measurements()
 
-print(MultiPlussssSystem.__dict__)
+print(MultiPlussssSystem.Grid_L1)
+print(MultiPlussssSystem.Grid_L2)
+print(MultiPlussssSystem.Grid_L3)
 
-MultiPlussssGrid = Grid("XYZ", "192.168.1.102", 502, 30, 10)
-MultiPlussssGrid.Measurements()
-
-print(MultiPlussssGrid.__dict__)
-
-MultiPlussssPVInverter = PVInverter("XYZ", "192.168.1.102", 502, 32, 10)
-MultiPlussssPVInverter.Measurements()
-
-print(MultiPlussssPVInverter.__dict__)
+print(MultiPlussssSystem.Battery_Voltage_System)
+print(MultiPlussssSystem.Battery_Current_System)
+print(MultiPlussssSystem.Battery_Power_System)
 
 ```
 
+### Controlling the power flow (force charge/discharge)
+
+Values are in Watts, negative is discharge.
+
+```python
+
+MultiPlussssVEBus = VEBus("XYZ", "192.168.1.XXX", 502, 246, 10)
+MultiPlussssVEBus.Set("ESS_power_setpoint_phase_1", 1000)
+MultiPlussssVEBus.Set("ESS_power_setpoint_phase_1", -2500)
+MultiPlussssVEBus.Set("ESS_power_setpoint_phase_1", 1500)
+
+```
 
 # Disclaimer
 
