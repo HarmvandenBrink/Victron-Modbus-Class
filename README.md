@@ -11,6 +11,7 @@ Make sure to have the right unit ID of the device. You can find the unit ID per 
 
 ### Reading measurements
 ```python
+#MultiPlussssSystem = System("ID", "IP-ADDRESS", PORT, UNITID, MQTTID)
 
 MultiPlussssSystem = System("XYZ", "192.168.1.XXX", 502, 100, 10)
 MultiPlussssSystem.Measurements()
